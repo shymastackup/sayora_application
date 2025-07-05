@@ -119,8 +119,7 @@ class HomeScreen extends StatelessWidget {
                       const BorderRadius.vertical(top: Radius.circular(30)),
                   boxShadow: [
                     BoxShadow(
-                      color:
-                          Colors.deepPurple.shade100.withOpacity(0.5),
+                      color: Colors.deepPurple.shade100.withOpacity(0.5),
                       blurRadius: 15,
                       spreadRadius: 2,
                       offset: const Offset(3, -10),
@@ -141,11 +140,19 @@ class HomeScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          infoCard('432 Rank', '45th position', Icons.star),
-                          infoCard('2345 Xp', 'Top among 456!', Icons.bolt),
+                          Container(
+                            color: Colors.red,
+                            child: infoCard(
+                                '432 Rank', '45th position', Icons.bolt),
+                          ),
+                          Container(
+                            color: Colors.red,
+                            child: infoCard(
+                                '2345 Xp', 'Top among 456!', Icons.star),
+                          ),
                         ],
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 10),
 
                       // Power Up Text
                       const Align(
@@ -201,8 +208,8 @@ class HomeScreen extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
                                   ),
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 14),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 14),
                                 ),
                                 child: const Text(
                                   'Get Started on Level - 1',
@@ -268,11 +275,17 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1,
         selectedItemColor: Colors.deepPurple,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+        items: [
+            BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/medal-star.jpg',
+              width: 24,
+              height: 24,
+            ),
+            label: '',
+            ),
+          const BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          const BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
         ],
       ),
     );
