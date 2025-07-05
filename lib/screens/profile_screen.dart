@@ -22,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                   'My Profile',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
                 ),
@@ -177,10 +177,10 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: const [
-                          Icon(Icons.school, color: Colors.grey),
-                          Icon(Icons.home, color: Colors.grey),
-                          Icon(Icons.person, color: Color.fromARGB(231, 114, 48, 230)),
+                        children: [
+                          _circleIcon(Icons.school, bgColor: Colors.white),
+                          _circleIcon(Icons.home, bgColor: Colors.white),
+                          _circleIcon(Icons.person, bgColor: const Color.fromARGB(231, 114, 48, 230)),
                         ],
                       ),
                     ),
