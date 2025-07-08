@@ -72,7 +72,8 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(7.0),
                       child: SvgPicture.asset(
                         'assets/icons/notification.svg',
-                        color: Color.fromARGB(255, 106, 66, 225),
+                        // // ignore: deprecated_member_use
+                        // color: Color.fromARGB(255, 106, 66, 225),
                       ),
                     ),
                   ),
@@ -119,14 +120,14 @@ class HomeScreen extends StatelessWidget {
                       const BorderRadius.vertical(top: Radius.circular(30)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.deepPurple.shade100.withOpacity(0.5),
+                      color: Colors.deepPurple.shade100.withAlpha((0.5 * 255).toInt()),
                       blurRadius: 15,
                       spreadRadius: 2,
                       offset: const Offset(3, -10),
                     ),
                     BoxShadow(
                       color: const Color.fromARGB(255, 231, 232, 237)
-                          .withOpacity(0.4),
+                          .withAlpha((0.4 * 255).toInt()),
                       blurRadius: 20,
                       spreadRadius: 4,
                       offset: const Offset(0, -10),

@@ -17,6 +17,8 @@ class SayoraApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const ProfileScreen(),
+      
     );
+    
   }
 }
