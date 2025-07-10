@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,15 +18,13 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 50),
-
-            // Top Row (Avatar, Streak, Notification)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
                   const CircleAvatar(
                     backgroundImage: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIhW5xIeDMiXDdpsiJYbOZLhQi8r1a7extjw&s',
+                      'https://img.freepik.com/free-psd/3d-rendering-hair-style-avatar-design_23-2151869121.jpg?semt=ais_hybrid',
                     ),
                     radius: 25,
                   ),
@@ -68,21 +65,15 @@ class HomeScreen extends StatelessWidget {
                       color: Color(0xFFF1EDFF),
                       shape: BoxShape.circle,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(7.0),
-                      child: SvgPicture.asset(
-                        'assets/icons/notification.svg',
-                        color: Color.fromARGB(255, 106, 66, 225),
-                      ),
+                    child: const Icon(
+                      Icons.notifications,
+                      color: Color.fromARGB(255, 77, 17, 217),
                     ),
                   ),
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
-
-            // Welcome messages
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Align(
@@ -106,10 +97,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             const SizedBox(height: 20),
-
-            // Main White Card with Shadow
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(20),
@@ -137,29 +125,44 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       // Rank and XP Cards
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            color: Colors.red,
-                            child: infoCard(
-                                '432 Rank', '45th position', Icons.bolt),
-                          ),
-                          Container(
-                            color: Colors.red,
-                            child: infoCard(
-                                '2345 Xp', 'Top among 456!', Icons.star),
-                          ),
-                        ],
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple.shade50,
+                          borderRadius: BorderRadius.circular(40),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Colors.deepPurple.shade100.withOpacity(0.3),
+                              blurRadius: 8,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            infoCard('432 Rank', '45th position', Icons.bolt),
+                            const SizedBox(width: 16),
+                            infoCard('2345 XP', 'Top among 456!', Icons.star),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 10),
 
-                      // Power Up Text
                       const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Let's power up your XP! ⭐",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Let's power up your XP! ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Icon(Icons.star,
+                                color: Color.fromARGB(255, 233, 210, 5),
+                                size: 20),
+                          ],
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -186,10 +189,27 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 CircleAvatar(
                                   backgroundColor: Colors.amber,
-                                  radius: 24,
-                                  child: Text(
-                                    'Level-1',
-                                    style: TextStyle(fontSize: 12),
+                                  radius: 30,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 8.0, horizontal: 6.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.star,
+                                            color: Colors.white, size: 20),
+                                        SizedBox(height: 6),
+                                        Text(
+                                          'Level-1',
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -230,36 +250,153 @@ class HomeScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const CircleAvatar(
-                              backgroundColor: Colors.white,
-                              child: Text('1'),
-                            ),
-                            const SizedBox(width: 16),
-                            const Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            // Progress Circle Box
+                            Container(
+                              width: 90,
+                              height: 90,
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF1EDFF),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Stack(
+                                alignment: Alignment.center,
                                 children: [
-                                  Text(
-                                    'Level 1',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
+                                  // Background circle
+                                  CircularProgressIndicator(
+                                    value: 1,
+                                    strokeWidth: 6,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Colors.deepPurple.shade100,
+                                    ),
                                   ),
-                                  Text(
-                                    'Let the journey begin! Earn XP, beat challenges, and level up fast.',
+                                  // Foreground progress
+                                  CircularProgressIndicator(
+                                    value: 0.2,
+                                    strokeWidth: 6,
+                                    valueColor:
+                                        const AlwaysStoppedAnimation<Color>(
+                                      Color(0xFF5D26C1),
+                                    ),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                  // Centered Text
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: const [
+                                      Text(
+                                        'Level 1',
+                                        style: TextStyle(
+                                            fontSize: 10, color: Colors.grey),
+                                      ),
+                                      SizedBox(height: 2),
+                                      Text(
+                                        '1 of 100',
+                                        style: TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
                             ),
-                            const Column(
-                              children: [
-                                Text('Previous'),
-                                Text('Next',
-                                    style: TextStyle(color: Colors.blue)),
-                              ],
+                            const SizedBox(width: 16),
+
+                            // Title + Description + Nav
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Level 1',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  const Text(
+                                    'Let the journey begin! Earn XP, beat challenges, and level up fast.',
+                                    style: TextStyle(fontSize: 13),
+                                  ),
+                                  const SizedBox(height: 12),
+
+                                  // Navigation
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: const [
+                                      Icon(Icons.arrow_back_ios,
+                                          size: 16, color: Colors.grey),
+                                      Text(
+                                        'Previous',
+                                        style: TextStyle(
+                                            fontSize: 12, color: Colors.grey),
+                                      ),
+                                      SizedBox(width: 20),
+                                      Text(
+                                        'Next',
+                                        style: TextStyle(
+                                            fontSize: 12, color: Colors.blue),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Icon(Icons.arrow_forward_ios,
+                                          size: 16, color: Colors.blue),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // Bottom Nav
+                      Positioned(
+                        bottom: 20,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 7), // Added padding
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 45, vertical: 25),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 2,
+                                blurRadius: 9,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const [
+                              _BottomNavIcon(
+                                Icons.school,
+                                bgColor: Colors.white,
+                                iconColor: Colors.grey,
+                              ),
+                              _BottomNavIcon(
+                                Icons.home,
+                                bgColor: Colors.white,
+                                iconColor: Colors.grey,
+                              ),
+                              _BottomNavIcon(
+                                Icons.person,
+                                bgColor: Color.fromARGB(231, 114, 48, 230),
+                                iconColor: Colors.white,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -270,47 +407,169 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-
-      // Bottom Navigation Bar
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        selectedItemColor: Colors.deepPurple,
-        items: [
-            BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/medal-star.jpg',
-              width: 24,
-              height: 24,
-            ),
-            label: '',
-            ),
-          const BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          const BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-        ],
-      ),
     );
   }
 
   // Info Card Widget
   Widget infoCard(String title, String subtitle, IconData icon) {
+    // Split title into number and label
+    final parts = title.split(' ');
+    final number = parts[0]; // e.g., "432"
+    final label = parts.sublist(1).join(' '); // e.g., "Rank"
+
     return Container(
-      width: 140,
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.deepPurple.shade100,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
+      padding: const EdgeInsets.all(5),
+      child: Row(
         children: [
-          Icon(icon, color: Colors.deepPurple),
-          const SizedBox(height: 8),
-          Text(
-            title,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          // Circle background icon
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: const BoxDecoration(
+              color: Colors.deepPurple,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icon, color: Colors.white),
           ),
-          Text(subtitle, style: const TextStyle(fontSize: 12)),
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RichText(
+                text: TextSpan(
+                  style: const TextStyle(fontSize: 14),
+                  children: [
+                    TextSpan(
+                      text: '$number ',
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                      text: label,
+                      style: const TextStyle(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                subtitle,
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+            ],
+          ),
         ],
       ),
     );
+  }
+}
+
+// Reusable BottomNav Icon
+class _BottomNavIcon extends StatefulWidget {
+  final IconData icon;
+  final Color bgColor;
+  final Color iconColor;
+
+  const _BottomNavIcon(
+    this.icon, {
+    required this.bgColor,
+    required this.iconColor,
+  });
+
+  @override
+  State<_BottomNavIcon> createState() => _BottomNavIconState();
+}
+
+class _BottomNavIconState extends State<_BottomNavIcon> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: _isHovered ? widget.bgColor.withOpacity(0.8) : widget.bgColor,
+          shape: BoxShape.circle,
+          boxShadow: _isHovered
+              ? [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 8,
+                    offset: Offset(0, 4),
+                  ),
+                ]
+              : [],
+        ),
+        child: Icon(
+          widget.icon,
+          size: 25,
+          color: widget.iconColor,
+        ),
+      ),
+    );
+  }
+}
+
+
+class LevelProgressWidget extends StatelessWidget {
+  final double progress;
+  const LevelProgressWidget({super.key, required this.progress});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 70,
+      height: 70,
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF1EDFF),
+        // borderRadius: BorderRadius.circular(12),
+        // border: Border.all(color: Colors.blueAccent),
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          // Background ring
+          CircularProgressIndicator(
+            value: 1,
+            strokeWidth: 6,
+            valueColor: AlwaysStoppedAnimation<Color>(
+              Colors.deepPurple.shade100,
+            ),
+          ),
+          // Foreground progress
+          CircularProgressIndicator(
+            value:
+                progress, // 🔁 adjust to your actual progress (e.g., 0.01 for 1 of 100)
+            strokeWidth: 9,
+            valueColor: const AlwaysStoppedAnimation<Color>(
+              Color(0xFF5D26C1), // deep purple
+            ),
+            backgroundColor: Colors.transparent,
+          ),
+          // Centered Text
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Level 1',
+                style: TextStyle(fontSize: 10, color: Colors.grey),
+              ),
+              Text(
+                '${(progress * 100).toInt()} of 100',
+                style:
+                    const TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+// insert the above Container here, replacing value: 0.2 with progress
   }
 }
