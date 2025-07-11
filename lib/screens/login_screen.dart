@@ -7,16 +7,12 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final mediaQuery = MediaQuery.of(context);
-    // final screenHeight = mediaQuery.size.height;
-    // final topHeight = 300.0;
+ 
 
     return Scaffold(
-      // resizeToAvoidBottomInset: true,
-      // backgroundColor: Colors.white,
+
       body: Container(
-        // width: double.infinity,
-        // height: double.infinity,
+
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [

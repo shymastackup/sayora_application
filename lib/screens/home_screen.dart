@@ -18,6 +18,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 50),
+
+            // Top Bar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -30,30 +32,22 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Row(
                       children: [
-                        Icon(Icons.local_fire_department,
-                            color: Colors.orangeAccent),
+                        Icon(Icons.local_fire_department, color: Colors.orangeAccent),
                         SizedBox(width: 4),
-                        Text(
-                          'Streak',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 145, 144, 224)),
-                        ),
+                        Text('Streak', style: TextStyle(color: Color(0xFF9190E0))),
                         SizedBox(width: 4),
-                        Text(
-                          '432',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 50, 46, 46),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        Text('432',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 50, 46, 46),
+                              fontWeight: FontWeight.bold,
+                            )),
                       ],
                     ),
                   ),
@@ -65,15 +59,15 @@ class HomeScreen extends StatelessWidget {
                       color: Color(0xFFF1EDFF),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
-                      Icons.notifications,
-                      color: Color.fromARGB(255, 77, 17, 217),
-                    ),
+                    child: const Icon(Icons.notifications, color: Color(0xFF4D11D9)),
                   ),
                 ],
               ),
             ),
+
             const SizedBox(height: 20),
+
+            // Greeting Text
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Align(
@@ -97,311 +91,212 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+
             const SizedBox(height: 20),
+
+            // Main Content
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(30)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.deepPurple.shade100.withOpacity(0.5),
-                      blurRadius: 15,
-                      spreadRadius: 2,
-                      offset: const Offset(3, -10),
+              child: Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.deepPurple.shade100.withOpacity(0.5),
+                          blurRadius: 15,
+                          spreadRadius: 2,
+                          offset: const Offset(3, -10),
+                        ),
+                        BoxShadow(
+                          color: const Color(0xFFE7E8ED).withOpacity(0.4),
+                          blurRadius: 20,
+                          spreadRadius: 4,
+                          offset: const Offset(0, -10),
+                        ),
+                      ],
                     ),
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 231, 232, 237)
-                          .withOpacity(0.4),
-                      blurRadius: 20,
-                      spreadRadius: 4,
-                      offset: const Offset(0, -10),
-                    ),
-                  ],
-                ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      // Rank and XP Cards
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 12, horizontal: 8),
-                        decoration: BoxDecoration(
-                          color: Colors.deepPurple.shade50,
-                          borderRadius: BorderRadius.circular(40),
-                          boxShadow: [
-                            BoxShadow(
-                              color:
-                                  Colors.deepPurple.shade100.withOpacity(0.3),
-                              blurRadius: 8,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            infoCard('432 Rank', '45th position', Icons.bolt),
-                            const SizedBox(width: 16),
-                            infoCard('2345 XP', 'Top among 456!', Icons.star),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Row(
-                          children: [
-                            Text(
-                              "Let's power up your XP! ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            Icon(Icons.star,
-                                color: Color.fromARGB(255, 233, 210, 5),
-                                size: 20),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-
-                      // Today's Quest Card
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.deepPurple.shade50,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: const [
-                                Expanded(
-                                  child: Text(
-                                    "Today's Quest\nLevel 1 - Introduction",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
-                                  ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          // Rank and XP Cards
+                          Container(
+                            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurple.shade50,
+                              borderRadius: BorderRadius.circular(40),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.deepPurple.shade100.withOpacity(0.3),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 4),
                                 ),
-                                CircleAvatar(
-                                  backgroundColor: Colors.amber,
-                                  radius: 30,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 8.0, horizontal: 6.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.star,
-                                            color: Colors.white, size: 20),
-                                        SizedBox(height: 6),
-                                        Text(
-                                          'Level-1',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                          textAlign: TextAlign.center,
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                infoCard('432 Rank', '45th position', Icons.bolt),
+                                const SizedBox(width: 16),
+                                infoCard('2345 XP', 'Top among 456!', Icons.star),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          const Align(
+                            alignment: Alignment.centerLeft,
+                            child: Row(
+                              children: [
+                                Text("Let's power up your XP!",
+                                    style: TextStyle(fontWeight: FontWeight.bold)),
+                                Icon(Icons.star, color: Color(0xFFE9D205), size: 20),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+
+                          // Today's Quest
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurple.shade50,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: const [
+                                    Expanded(
+                                      child: Text(
+                                        "Today's Quest\nLevel 1 - Introduction",
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                      ),
+                                    ),
+                                    CircleAvatar(
+                                      backgroundColor: Colors.amber,
+                                      radius: 30,
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.star, color: Colors.white, size: 20),
+                                            SizedBox(height: 6),
+                                            Text(
+                                              'Level-1',
+                                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.white),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ],
                                         ),
-                                      ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                const Text('Complete it to earn XP and unlock rewards!'),
+                                const SizedBox(height: 10),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.deepPurple,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(vertical: 14),
+                                    ),
+                                    child: const Text(
+                                      'Get Started on Level - 1',
+                                      style: TextStyle(color: Colors.white),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 10),
-                            const Text(
-                              'Complete it to earn XP and unlock rewards!',
-                            ),
-                            const SizedBox(height: 10),
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.deepPurple,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 14),
-                                ),
-                                child: const Text(
-                                  'Get Started on Level - 1',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20),
+                          ),
 
-                      // Level Card
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.deepPurple.shade50,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Progress Circle Box
-                            Container(
-                              width: 90,
-                              height: 90,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF1EDFF),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  // Background circle
-                                  CircularProgressIndicator(
-                                    value: 1,
-                                    strokeWidth: 6,
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      Colors.deepPurple.shade100,
-                                    ),
-                                  ),
-                                  // Foreground progress
-                                  CircularProgressIndicator(
-                                    value: 0.2,
-                                    strokeWidth: 6,
-                                    valueColor:
-                                        const AlwaysStoppedAnimation<Color>(
-                                      Color(0xFF5D26C1),
-                                    ),
-                                    backgroundColor: Colors.transparent,
-                                  ),
-                                  // Centered Text
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
+                          const SizedBox(height: 20),
+
+                          // Level Progress
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurple.shade50,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const LevelProgressWidget(progress: 0.2),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: const [
+                                      Text('Level 1', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                                      SizedBox(height: 4),
                                       Text(
-                                        'Level 1',
-                                        style: TextStyle(
-                                            fontSize: 10, color: Colors.grey),
+                                        'Let the journey begin! Earn XP, beat challenges, and level up fast.',
+                                        style: TextStyle(fontSize: 13),
                                       ),
-                                      SizedBox(height: 2),
-                                      Text(
-                                        '1 of 100',
-                                        style: TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
+                                      SizedBox(height: 12),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios, size: 16, color: Colors.grey),
+                                          Text('Previous', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                                          SizedBox(width: 20),
+                                          Text('Next', style: TextStyle(fontSize: 12, color: Colors.blue)),
+                                          SizedBox(width: 8),
+                                          Icon(Icons.arrow_forward_ios, size: 16, color: Colors.blue),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(width: 16),
-
-                            // Title + Description + Nav
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    'Level 1',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  const Text(
-                                    'Let the journey begin! Earn XP, beat challenges, and level up fast.',
-                                    style: TextStyle(fontSize: 13),
-                                  ),
-                                  const SizedBox(height: 12),
-
-                                  // Navigation
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: const [
-                                      Icon(Icons.arrow_back_ios,
-                                          size: 16, color: Colors.grey),
-                                      Text(
-                                        'Previous',
-                                        style: TextStyle(
-                                            fontSize: 12, color: Colors.grey),
-                                      ),
-                                      SizedBox(width: 20),
-                                      Text(
-                                        'Next',
-                                        style: TextStyle(
-                                            fontSize: 12, color: Colors.blue),
-                                      ),
-                                      SizedBox(width: 8),
-                                      Icon(Icons.arrow_forward_ios,
-                                          size: 16, color: Colors.blue),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      // Bottom Nav
-                      Positioned(
-                        bottom: 20,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 5, vertical: 7), // Added padding
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 45, vertical: 25),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                spreadRadius: 2,
-                                blurRadius: 9,
-                                offset: const Offset(0, 4),
-                              ),
-                            ],
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: const [
-                              _BottomNavIcon(
-                                Icons.school,
-                                bgColor: Colors.white,
-                                iconColor: Colors.grey,
-                              ),
-                              _BottomNavIcon(
-                                Icons.home,
-                                bgColor: Colors.white,
-                                iconColor: Colors.grey,
-                              ),
-                              _BottomNavIcon(
-                                Icons.person,
-                                bgColor: Color.fromARGB(231, 114, 48, 230),
-                                iconColor: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
+                          const SizedBox(height: 90), // Give space for nav bar
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+
+                  // Bottom Nav Bar
+                  Positioned(
+                    bottom: 20,
+                    left: 45,
+                    right: 45,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 7),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 9,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const [
+                          _BottomNavIcon(Icons.school, bgColor: Colors.white, iconColor: Colors.grey),
+                          _BottomNavIcon(Icons.home, bgColor: Colors.white, iconColor: Colors.grey),
+                          _BottomNavIcon(Icons.person, bgColor: Colors.white, iconColor: Colors.grey),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -410,18 +305,15 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // Info Card Widget
   Widget infoCard(String title, String subtitle, IconData icon) {
-    // Split title into number and label
     final parts = title.split(' ');
-    final number = parts[0]; // e.g., "432"
-    final label = parts.sublist(1).join(' '); // e.g., "Rank"
+    final number = parts[0];
+    final label = parts.sublist(1).join(' ');
 
     return Container(
       padding: const EdgeInsets.all(5),
       child: Row(
         children: [
-          // Circle background icon
           Container(
             padding: const EdgeInsets.all(8),
             decoration: const BoxDecoration(
@@ -438,25 +330,12 @@ class HomeScreen extends StatelessWidget {
                 text: TextSpan(
                   style: const TextStyle(fontSize: 14),
                   children: [
-                    TextSpan(
-                      text: '$number ',
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(
-                      text: label,
-                      style: const TextStyle(
-                          color: Colors.deepPurple,
-                          fontWeight: FontWeight.normal),
-                    ),
+                    TextSpan(text: '$number ', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                    TextSpan(text: label, style: const TextStyle(color: Colors.deepPurple)),
                   ],
                 ),
               ),
-              Text(
-                subtitle,
-                style: const TextStyle(fontSize: 12, color: Colors.grey),
-              ),
+              Text(subtitle, style: const TextStyle(fontSize: 12, color: Colors.grey)),
             ],
           ),
         ],
@@ -465,57 +344,25 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// Reusable BottomNav Icon
-class _BottomNavIcon extends StatefulWidget {
+// BottomNavIcon widget
+class _BottomNavIcon extends StatelessWidget {
   final IconData icon;
   final Color bgColor;
   final Color iconColor;
 
-  const _BottomNavIcon(
-    this.icon, {
-    required this.bgColor,
-    required this.iconColor,
-  });
-
-  @override
-  State<_BottomNavIcon> createState() => _BottomNavIconState();
-}
-
-class _BottomNavIconState extends State<_BottomNavIcon> {
-  bool _isHovered = false;
+  const _BottomNavIcon(this.icon, {required this.bgColor, required this.iconColor});
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: _isHovered ? widget.bgColor.withOpacity(0.8) : widget.bgColor,
-          shape: BoxShape.circle,
-          boxShadow: _isHovered
-              ? [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
-                  ),
-                ]
-              : [],
-        ),
-        child: Icon(
-          widget.icon,
-          size: 25,
-          color: widget.iconColor,
-        ),
-      ),
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(color: bgColor, shape: BoxShape.circle),
+      child: Icon(icon, size: 25, color: iconColor),
     );
   }
 }
 
-
+// LevelProgressWidget
 class LevelProgressWidget extends StatelessWidget {
   final double progress;
   const LevelProgressWidget({super.key, required this.progress});
@@ -523,53 +370,36 @@ class LevelProgressWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 70,
-      height: 70,
-      padding: const EdgeInsets.all(6),
+      width: 90,
+      height: 90,
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: const Color(0xFFF1EDFF),
-        // borderRadius: BorderRadius.circular(12),
-        // border: Border.all(color: Colors.blueAccent),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Background ring
           CircularProgressIndicator(
             value: 1,
             strokeWidth: 6,
-            valueColor: AlwaysStoppedAnimation<Color>(
-              Colors.deepPurple.shade100,
-            ),
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.deepPurple.shade100),
           ),
-          // Foreground progress
           CircularProgressIndicator(
-            value:
-                progress, // 🔁 adjust to your actual progress (e.g., 0.01 for 1 of 100)
-            strokeWidth: 9,
-            valueColor: const AlwaysStoppedAnimation<Color>(
-              Color(0xFF5D26C1), // deep purple
-            ),
+            value: progress,
+            strokeWidth: 6,
+            valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF5D26C1)),
             backgroundColor: Colors.transparent,
           ),
-          // Centered Text
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Level 1',
-                style: TextStyle(fontSize: 10, color: Colors.grey),
-              ),
-              Text(
-                '${(progress * 100).toInt()} of 100',
-                style:
-                    const TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
-              ),
+              const Text('Level 1', style: TextStyle(fontSize: 10, color: Colors.grey)),
+              Text('${(progress * 100).toInt()} of 100', style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
             ],
           ),
         ],
       ),
     );
-// insert the above Container here, replacing value: 0.2 with progress
   }
 }
