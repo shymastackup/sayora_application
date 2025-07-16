@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  int selectedIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +28,7 @@ class ProfileScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
+              // Top Bar
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
@@ -48,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
 
-              // Profile card
+              // Profile Card..........................................................
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Container(
@@ -107,27 +115,21 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
 
-              Gap(12),
+              const Gap(12),
 
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40),
-                ),
-                child: Container(
-                  color: Colors.white,
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 548,
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 6, vertical: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                  child: Container(
+                    color: Colors.white,
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      children: [
+                        //Scrollable Info Section...............................................
+                        Expanded(
                           child: ListView(
                             padding: const EdgeInsets.all(20),
                             children: [
@@ -218,27 +220,26 @@ class ProfileScreen extends StatelessWidget {
                                 trailingIcon: Icons.send,
                               ),
                               _buildInfoTile(
-                                iconWidget: _circleIcon(Icons.logout,
-                                    bgColor: Color(0xFFFA4141)),
+                                iconWidget: _circleIcon(
+                                  Icons.logout,
+                                  bgColor: const Color(0xFFFA4141),
+                                ),
                                 label: 'Logout',
                                 value: 'Click here to logout',
-                                iconColor: Color.fromARGB(255, 224, 18, 4),
+                                iconColor:
+                                    const Color.fromARGB(255, 224, 18, 4),
                               ),
                             ],
                           ),
                         ),
-                      ),
 
-                      // Bottom navigation bar with active icon highlight
-                      StatefulBuilder(
-                        builder: (context, setState) {
-                          int? selectedIndex;
-
-                          return Container(
-                            height: 60,
-                            width: 250,
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 40, vertical: 8),
+                        // Bottom Navigation.....................................................
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 55, vertical: 33),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(30),
@@ -254,42 +255,48 @@ class ProfileScreen extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                IconButton(
-                                  onPressed: () =>
-                                      setState(() => selectedIndex = 0),
-                                  icon: _circleIcon(
-                                    Icons.school,
-                                    bgColor: selectedIndex == 0
-                                        ? const Color(0xFF9E6BFC)
-                                        : Colors.white,
+                                Expanded(
+                                  child: IconButton(
+                                    onPressed: () =>
+                                        setState(() => selectedIndex = 0),
+                                    icon: _circleIcon(
+                                      Icons.school,
+                                      bgColor: selectedIndex == 0
+                                          ? const Color(0xFF9E6BFC)
+                                          : Colors.white,
+                                    ),
                                   ),
                                 ),
-                                IconButton(
-                                  onPressed: () =>
-                                      setState(() => selectedIndex = 1),
-                                  icon: _circleIcon(
-                                    Icons.home,
-                                    bgColor: selectedIndex == 1
-                                        ? const Color(0xFF9E6BFC)
-                                        : Colors.white,
+                                Expanded(
+                                  child: IconButton(
+                                    onPressed: () =>
+                                        setState(() => selectedIndex = 1),
+                                    icon: _circleIcon(
+                                      Icons.home,
+                                      bgColor: selectedIndex == 1
+                                          ? const Color(0xFF9E6BFC)
+                                          : Colors.white,
+                                    ),
                                   ),
                                 ),
-                                IconButton(
-                                  onPressed: () =>
-                                      setState(() => selectedIndex = 2),
-                                  icon: _circleIcon(
-                                    Icons.person,
-                                    bgColor: selectedIndex == 2
-                                        ? const Color(0xFF9E6BFC)
-                                        : Colors.white,
+                                Expanded(
+                                  child: IconButton(
+                                    onPressed: () =>
+                                        setState(() => selectedIndex = 2),
+                                    icon: _circleIcon(
+                                      Icons.person,
+                                      bgColor: selectedIndex == 2
+                                          ? const Color(0xFF9E6BFC)
+                                          : Colors.white,
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
-                          );
-                        },
-                      ),
-                    ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

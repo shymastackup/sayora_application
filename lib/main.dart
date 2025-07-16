@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sayora/screens/chat_screen.dart';
+// import 'package:sayora/screens/profile_screen.dart';
+// import 'package:sayora/screens/splash_screen.dart';
+// import 'package:sayora/screens/svg_demo.dart';
 // import 'package:sayora/screens/home_screen.dart';
-import 'package:sayora/screens/profile_screen.dart';
+// import 'package:sayora/screens/profile_screen.dart';
+// import 'package:sayora/screens/splash_screen.dart';
 // import 'package:sayora/screens/home_screen.dart';
 // import 'package:sayora/screens/profile_screen.dart';
 // import 'package:sayora/screens/home_screen.dart';
@@ -20,7 +25,7 @@ class SayoraApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const ProfileScreen(),
+      home:  ChatScreen(),
     );
   }
 }
