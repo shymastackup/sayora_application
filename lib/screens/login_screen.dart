@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -10,7 +11,7 @@ class LoginScreen extends StatelessWidget {
  
 
     return Scaffold(
-
+  
       body: Container(
 
         decoration: const BoxDecoration(
@@ -51,20 +52,20 @@ class LoginScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 10),
                 decoration: BoxDecoration(
                   color: Colors.white,
-            
+
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
                   ),
                   boxShadow: const [
-                    // First shadow (higher, lighter, fully transparent)
+                    
                     BoxShadow(
                       color: Color.fromRGBO(255, 255, 255, 0.12),
                       blurRadius: 25,
                       spreadRadius: 0,
                       offset: Offset(0, -30),
                     ),
-                    // Second shadow (closer, darker, fully transparent)
+                   
                     BoxShadow(
                       color: Color.fromRGBO(110, 84, 198, 1),
                       blurRadius: 20,
@@ -82,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     return SingleChildScrollView(
-                      // padding: EdgeInsets.only(bottom: mediaQuery.viewInsets.bottom),
+                     
                       child: ConstrainedBox(
                         constraints: BoxConstraints(
                           minHeight: constraints.maxHeight,
@@ -173,7 +174,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 20),
 
-                              // Social buttons
+                             
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -185,11 +186,19 @@ class LoginScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 30),
 
-                              // Get Started Button
+                              
                               SizedBox(
                                 height: 50,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomeScreen(),
+                                      ),
+                                    );
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
@@ -223,7 +232,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 20),
 
-                              // Sign Up text
+                              
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

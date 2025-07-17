@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sayora/screens/home_screen.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -20,13 +21,12 @@ class ChatScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            _buildHeader(),
+            _buildHeader(context), 
             Expanded(
               child: Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(40)),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
                 ),
                 child: Column(
                   children: [
@@ -38,45 +38,46 @@ class ChatScreen extends StatelessWidget {
                             isMe: false,
                             message:
                                 "Sed Do Eiusmod Tempor Incididunt Ut Labore Et Magna Aliqua.ddddeje hen addd cheyy.",
-                            time: "10 AM",
+                            time: "10:00 AM",
                             avatar: '👩‍🦰',
                           ),
                           _messageBubble(
                             isMe: true,
                             message:
                                 "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit.Consectetur Adipisicing Elit?",
-                            time: "10 AM",
+                            time: "10:01 AM",
                             avatar: '🧑🏾‍🦱',
                           ),
                           _messageBubble(
                             isMe: true,
-                            message: "Lorem Ipsum Dolor Sit Consectetur Adipisicing Elit",
-                            time: "10 AM",
+                            message:
+                                "Lorem Ipsum Dolor Sit Consectetur Adipisicing Elit",
+                            time: "10:02 AM",
                             avatar: '🧑🏾‍🦱',
                           ),
                           _messageBubble(
                             isMe: false,
-                            message:
-                                "Ut Enim Ad Minim Veniam..",
-                            time: "10 AM",
+                            message: "Ut Enim Ad Minim Veniam..",
+                            time: "10:03 AM",
                             avatar: '👩‍🦰',
                           ),
                           _messageBubble(
                             isMe: true,
-                            message: "Lorem Ipsum Adipiscing  Consectetur Adipisicing Elit",
-                            time: "10 AM",
+                            message:
+                                "Lorem Ipsum Adipiscing  Consectetur Adipisicing Elit",
+                            time: "10:04 AM",
                             avatar: '🧑🏾‍🦱',
                           ),
                           _messageBubble(
                             isMe: false,
                             message: "Sed Do Eiusmod",
-                            time: "10 AM",
+                            time: "10:05 AM",
                             avatar: '👩‍🦰',
                           ),
                           _messageBubble(
                             isMe: true,
                             message: "Ok",
-                            time: "10 AM",
+                            time: "10:06 AM",
                             avatar: '🧑🏾‍🦱',
                           ),
                         ],
@@ -93,15 +94,26 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  
+  Widget _buildHeader(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 50, left: 16, right: 16, bottom: 10),
       child: Row(
         children: [
-          const CircleAvatar(
-            backgroundColor: Colors.white,
-            child: Icon(Icons.arrow_back,
-                color: Color.fromRGBO(108, 65, 250, 1)),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
+              );
+            },
+            child: const CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.arrow_back,
+                color: Color.fromRGBO(108, 65, 250, 1),
+              ),
+            ),
           ),
           const SizedBox(width: 10),
           Column(
@@ -110,7 +122,9 @@ class ChatScreen extends StatelessWidget {
               Text(
                 'Sayora',
                 style: GoogleFonts.lato(
-                    fontSize: 16, color: Colors.white, fontWeight: FontWeight.w400),
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400),
               ),
               Row(
                 children: [
@@ -154,12 +168,12 @@ class ChatScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
-        mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment:
+            isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          if (!isMe) _buildAvatar(avatarUrl), // Other: avatar left
+          if (!isMe) _buildAvatar(avatarUrl),
           if (!isMe) const SizedBox(width: 8),
-
           Flexible(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -170,13 +184,13 @@ class ChatScreen extends StatelessWidget {
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25),
                         bottomLeft: Radius.circular(25),
-                        bottomRight: Radius.circular(0), // sharp side
+                        bottomRight: Radius.circular(0),
                       )
                     : const BorderRadius.only(
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25),
                         bottomRight: Radius.circular(25),
-                        bottomLeft: Radius.circular(0), // sharp side
+                        bottomLeft: Radius.circular(0),
                       ),
               ),
               child: Column(
@@ -202,9 +216,8 @@ class ChatScreen extends StatelessWidget {
               ),
             ),
           ),
-
           if (isMe) const SizedBox(width: 8),
-          if (isMe) _buildAvatar(avatarUrl), // Me: avatar right
+          if (isMe) _buildAvatar(avatarUrl),
         ],
       ),
     );
@@ -224,7 +237,8 @@ class ChatScreen extends StatelessWidget {
           fit: BoxFit.cover,
           width: 36,
           height: 36,
-          errorBuilder: (context, error, stackTrace) => const Icon(Icons.person, color: Colors.white),
+          errorBuilder: (context, error, stackTrace) =>
+              const Icon(Icons.person, color: Colors.white),
         ),
       ),
     );
@@ -248,10 +262,7 @@ class ChatScreen extends StatelessWidget {
         child: TextField(
           decoration: InputDecoration(
             hintText: "Type message here...",
-            hintStyle: GoogleFonts.lato(
-              color: Colors.grey[600],
-              fontSize: 14,
-            ),
+            hintStyle: GoogleFonts.lato(color: Colors.grey[600], fontSize: 14),
             filled: true,
             fillColor: Colors.white,
             contentPadding: const EdgeInsets.symmetric(vertical: 14),
@@ -263,21 +274,34 @@ class ChatScreen extends StatelessWidget {
               Icons.emoji_emotions_outlined,
               color: Color.fromRGBO(175, 164, 212, 1),
             ),
-            suffixIcon: Container(
-              margin: const EdgeInsets.only(right: 8),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF6B46C1),
-                    Color(0xFF9F7AEA),
-                  ],
+            suffixIcon: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFFEDE7F6),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Icon(Icons.mic, color: Color(0xFF6B46C1), size: 20),
+                  ),
                 ),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(10),
-                child: Icon(Icons.send, color: Colors.white, size: 20),
-              ),
+                Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [Color(0xFF6B46C1), Color(0xFF9F7AEA)],
+                    ),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Icon(Icons.send, color: Colors.white, size: 20),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
