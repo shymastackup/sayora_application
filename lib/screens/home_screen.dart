@@ -261,6 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(width: 8),
                 Container(
+                  
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
