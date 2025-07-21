@@ -82,7 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Column(
           children: [
-            // Padding(padding:EdgeInsetsGeometry.all(8)),
             _buildTopHeader(),
             Expanded(
               child: Container(
@@ -144,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(50),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black12.withOpacity(0.08),
+                              color: Colors.black12.withAlpha(20 ),
                               blurRadius: 8,
                               offset: const Offset(0, 3),
                             ),
