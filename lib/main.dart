@@ -20,7 +20,7 @@ class SayoraApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      home: const SplashScreen(),
        routes: {
       '/login': (context) => const LoginScreen(),
       '/home': (context) => const HomeScreen(),
