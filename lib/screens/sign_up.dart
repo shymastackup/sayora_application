@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'home_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget {
             Expanded(
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.fromLTRB(30, 30, 30, 10),
+                padding: const EdgeInsets.fromLTRB(30, 30, 30, 20),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: const BorderRadius.only(
@@ -84,25 +84,55 @@ class LoginScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Text(
-                                "Welcome Back!",
+                                "Create Account !",
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.poppins(
                                   fontSize: 22,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              const SizedBox(height: 8),
+                              // const SizedBox(height: 5),
                               Text(
-                                "Log in to pick up where you left off.",
+                                "Sign up to start using Sayora .",
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.lato(
                                   fontSize: 14,
                                   color: Colors.black54,
                                 ),
                               ),
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 10),
+                              // const SizedBox(height: 20),
                               Text(
-                                "Enter Email Address",
+                                " First Name",
+                                style: GoogleFonts.lato(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              TextField(
+                                obscureText: true,
+                                decoration: _inputDecoration(
+                                  "Enter your first name",
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                " Last Name",
+                                style: GoogleFonts.lato(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              TextField(
+                                obscureText: true,
+                                decoration: _inputDecoration(
+                                  "Enter your last name",
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                " Email Address",
                                 style: GoogleFonts.lato(
                                   fontSize: 14,
                                   color: Colors.black,
@@ -114,15 +144,14 @@ class LoginScreen extends StatelessWidget {
                                   "email@example.com",
                                 ),
                               ),
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 8),
                               Text(
-                                "Enter Password",
+                                " Password",
                                 style: GoogleFonts.lato(
                                   fontSize: 14,
                                   color: Colors.black,
                                 ),
                               ),
-                              const SizedBox(height: 8),
                               TextField(
                                 obscureText: true,
                                 decoration: _inputDecoration(
@@ -142,7 +171,7 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 14),
+                              const SizedBox(height: 12),
                               Row(
                                 children: [
                                   const Expanded(child: Divider()),
@@ -151,7 +180,7 @@ class LoginScreen extends StatelessWidget {
                                       horizontal: 8.0,
                                     ),
                                     child: Text(
-                                      "Or Login with",
+                                      "Or Sign up with",
                                       style: GoogleFonts.lato(fontSize: 12),
                                     ),
                                   ),
@@ -217,13 +246,13 @@ class LoginScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Don’t have an account? ",
+                                    "Already have an account? ",
                                     style: GoogleFonts.lato(fontSize: 13),
                                   ),
                                   GestureDetector(
                                     onTap: () {},
                                     child: Text(
-                                      "Sign Up",
+                                      "Log In",
                                       style: GoogleFonts.lato(
                                         fontSize: 13,
                                         fontWeight: FontWeight.bold,
