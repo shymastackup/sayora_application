@@ -106,6 +106,7 @@ class LoginScreen extends StatelessWidget {
                                 "Enter Email Address",
                                 style: GoogleFonts.lato(
                                   fontSize: 14,
+                                  fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
                               ),
@@ -120,6 +121,7 @@ class LoginScreen extends StatelessWidget {
                                 "Enter Password",
                                 style: GoogleFonts.lato(
                                   fontSize: 14,
+                                  fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
                               ),
@@ -138,6 +140,7 @@ class LoginScreen extends StatelessWidget {
                                     "Forgot your password?",
                                     style: GoogleFonts.lato(
                                       fontSize: 13,
+                                      fontWeight: FontWeight.bold,
                                       color: Colors.black87,
                                     ),
                                   ),
@@ -153,7 +156,8 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                     child: Text(
                                       "Or Login with",
-                                      style: GoogleFonts.lato(fontSize: 12),
+                                      style: GoogleFonts.lato(
+                                          fontSize: 12, color: Colors.grey),
                                     ),
                                   ),
                                   const Expanded(child: Divider()),
@@ -162,7 +166,7 @@ class LoginScreen extends StatelessWidget {
                               const SizedBox(height: 20),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   _socialButton('assets/icons/fb.svg'),
                                   _socialButton('assets/icons/google.svg'),
@@ -219,7 +223,10 @@ class LoginScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     "Don’t have an account? ",
-                                    style: GoogleFonts.lato(fontSize: 13),
+                                    style: GoogleFonts.lato(
+                                        fontSize: 13,
+                                        color: const Color.fromARGB(
+                                            255, 73, 71, 71)),
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -286,8 +293,8 @@ class LoginScreen extends StatelessWidget {
 
   Widget _socialButton(String iconPath) {
     return Container(
-      width: 90,
-      height: 45,
+      width: 105,
+      height: 50,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),

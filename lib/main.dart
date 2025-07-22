@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sayora/screens/chat_screen.dart';
-// import 'package:sayora/screens/help.dart';
+
 import 'package:sayora/screens/home_screen.dart';
 import 'package:sayora/screens/intro_screen.dart';
 import 'package:sayora/screens/level_screen.dart.dart';
 import 'package:sayora/screens/login_screen.dart';
 import 'package:sayora/screens/profile_screen.dart';
 import 'package:sayora/screens/sign_up.dart';
-// import 'package:sayora/screens/sign_up.dart';
+
 import 'package:sayora/screens/splash_screen.dart';
 
 void main() {
@@ -21,9 +21,10 @@ class SayoraApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SignUpScreen(),
+      home: const LoginScreen(),
       routes: {
         '/login': (context) => const LoginScreen(),
+        '/signup': (context) => const SignUpScreen(),
         '/home': (context) => const HomeScreen(),
         '/chat': (context) => const ChatScreen(),
         '/splash': (context) => const SplashScreen(),
