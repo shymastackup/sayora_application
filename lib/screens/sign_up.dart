@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sayora/screens/login_screen.dart';
 import 'home_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -250,18 +251,21 @@ class SignUpScreen extends StatelessWidget {
                                     style: GoogleFonts.lato(fontSize: 13),
                                   ),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LoginScreen()),
+                                      );
+                                    },
                                     child: Text(
                                       "Log In",
                                       style: GoogleFonts.lato(
                                         fontSize: 13,
                                         fontWeight: FontWeight.bold,
                                         color: const Color.fromRGBO(
-                                          67,
-                                          125,
-                                          206,
-                                          1,
-                                        ),
+                                            67, 125, 206, 1),
                                       ),
                                     ),
                                   ),
