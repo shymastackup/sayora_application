@@ -85,7 +85,6 @@ class _LevelScreenState extends State<LevelScreen> {
         ),
         child: Column(
           children: [
-         
             Container(
               padding: const EdgeInsets.only(
                 top: 50,
@@ -121,17 +120,30 @@ class _LevelScreenState extends State<LevelScreen> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(
-                              Icons.bolt,
-                              color: Color.fromRGBO(139, 109, 212, 1),
-                              size: 20,
+                            SvgPicture.asset(
+                              'assets/icons/flash.svg', // Replace with your actual path
+                              height: 20,
+                              width: 20,
+                              colorFilter: const ColorFilter.mode(
+                                Color.fromRGBO(108, 65, 250, 1),
+                                BlendMode.srcIn,
+                              ),
                             ),
                             const SizedBox(width: 5),
                             Text(
-                              "Streak 432",
+                              "Streak ",
                               style: GoogleFonts.lato(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(139, 109, 212, 1),
+                              ),
+                            ),
+                            Text(
+                              "432 ",
+                              style: GoogleFonts.lato(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(16, 15, 17, 1),
                               ),
                             ),
                           ],
@@ -144,9 +156,14 @@ class _LevelScreenState extends State<LevelScreen> {
                           shape: BoxShape.circle,
                         ),
                         padding: const EdgeInsets.all(4),
-                        child: const Icon(
-                          Icons.notifications_none,
-                          color: Color.fromRGBO(108, 65, 250, 1),
+                        child: SvgPicture.asset(
+                          'assets/icons/notification.svg', // Replace with your actual path
+                          height: 24,
+                          width: 24,
+                          colorFilter: const ColorFilter.mode(
+                            Color.fromRGBO(108, 65, 250, 1),
+                            BlendMode.srcIn,
+                          ),
                         ),
                       ),
                     ],
@@ -154,8 +171,6 @@ class _LevelScreenState extends State<LevelScreen> {
                 ],
               ),
             ),
-
-           
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -190,6 +205,10 @@ class _LevelScreenState extends State<LevelScreen> {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(
+                                      color: Colors.deepPurple,
+                                      width: 0.5,
+                                    ),
                                     boxShadow: const [
                                       BoxShadow(
                                         color: Colors.black12,
@@ -207,7 +226,7 @@ class _LevelScreenState extends State<LevelScreen> {
                                       ),
                                       const SizedBox(width: 6),
                                       Text(
-                                        "0 / 100 Completed",
+                                        "0 out of 100 Completed",
                                         style: GoogleFonts.lato(
                                           fontSize: 13,
                                           fontWeight: FontWeight.w500,
@@ -215,7 +234,7 @@ class _LevelScreenState extends State<LevelScreen> {
                                       ),
                                     ],
                                   ),
-                                ),
+                                )
                               ],
                             ),
                             const SizedBox(height: 20),
@@ -302,9 +321,11 @@ class _LevelScreenState extends State<LevelScreen> {
                 height: 60,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                     colors: [
-                      Color.fromRGBO(254, 237, 74, 1),
-                      Color.fromRGBO(255, 155, 30, 1),
+                      Color.fromRGBO(254, 237, 74, 1), // Top
+                      Color.fromRGBO(255, 155, 30, 1), // Bottom
                     ],
                   ),
                   shape: BoxShape.circle,
@@ -435,7 +456,6 @@ class _LevelScreenState extends State<LevelScreen> {
                   height: 26,
                   color: Colors.white,
                 ),
-               
                 Text(
                   level,
                   style: GoogleFonts.lato(

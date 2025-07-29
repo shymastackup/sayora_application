@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sayora/screens/chat_screen.dart';
 import 'package:sayora/screens/level_screen.dart.dart';
 import 'package:sayora/screens/profile_screen.dart';
+import 'package:sayora/screens/services/circular_progress.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -93,9 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     topRight: Radius.circular(40),
                   ),
                 ),
-                child:
-                   
-                    Column(
+                child: Column(
                   children: [
                     Expanded(
                       child: SingleChildScrollView(
@@ -115,10 +114,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                const Icon(
-                                  Icons.star_border,
-                                  color: Color.fromRGBO(139, 109, 212, 1),
-                                  size: 30,
+                                SvgPicture.asset(
+                                  'assets/icons/star_flash.svg', // Update with your actual SVG path
+                                  height: 20,
+                                  width: 25,
+                                  colorFilter: const ColorFilter.mode(
+                                    Color.fromRGBO(139, 109, 212, 1),
+                                    BlendMode.srcIn,
+                                  ),
                                 ),
                               ],
                             ),
@@ -143,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(50),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black12.withAlpha(20 ),
+                              color: Colors.black12.withAlpha(20),
                               blurRadius: 8,
                               offset: const Offset(0, 3),
                             ),
@@ -173,9 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 10),
       child: Stack(
-        
         children: [
-         
           Align(
             alignment: Alignment.topLeft,
             child: Column(
@@ -207,8 +208,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-
-          
           Align(
             alignment: Alignment.topRight,
             child: Row(
@@ -233,10 +232,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(
-                        Icons.bolt,
-                        color: Color.fromRGBO(139, 109, 212, 1),
-                        size: 20,
+                      SvgPicture.asset(
+                        'assets/icons/flash.svg', // Update this path if needed
+                        height: 20,
+                        width: 20,
+                        colorFilter: const ColorFilter.mode(
+                          Color.fromRGBO(139, 109, 212, 1),
+                          BlendMode.srcIn,
+                        ),
                       ),
                       const SizedBox(width: 3),
                       Text(
@@ -260,15 +263,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(width: 8),
                 Container(
-                  
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
                   ),
                   padding: const EdgeInsets.all(4),
-                  child: const Icon(
-                    Icons.notifications_none,
-                    color: Color.fromRGBO(108, 65, 250, 1),
+                  child: SvgPicture.asset(
+                    'assets/icons/notification.svg', // Update this path if needed
+                    height: 20,
+                    width: 20,
+                    colorFilter: const ColorFilter.mode(
+                      Color.fromRGBO(139, 109, 212, 1),
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               ],
@@ -291,14 +298,16 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _singleStat(
-            title: "432 Rank",
+            number: "432",
+            label: "Rank",
             subtitle: "45th position",
-            icon: Icons.bolt_rounded,
+            iconPath: 'assets/icons/flash.svg',
           ),
           _singleStat(
-            title: "2345 Xp",
+            number: "2345",
+            label: "Xp",
             subtitle: "Top among 456!",
-            icon: Icons.star_border,
+            iconPath: 'assets/icons/star_flash.svg',
           ),
         ],
       ),
@@ -306,9 +315,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _singleStat({
-    required String title,
+    required String number,
+    required String label,
     required String subtitle,
-    required IconData icon,
+    required String iconPath,
+    Color labelColor = const Color(0xFF8E55DD), // default purple
   }) {
     return Row(
       children: [
@@ -324,20 +335,41 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             shape: BoxShape.circle,
           ),
-          padding: const EdgeInsets.all(6),
-          child: Icon(icon, color: Colors.white, size: 30),
+          padding: const EdgeInsets.all(8),
+          child: SvgPicture.asset(
+            iconPath,
+            height: 25,
+            width: 26,
+            colorFilter: const ColorFilter.mode(
+              Colors.white,
+              BlendMode.srcIn,
+            ),
+          ),
         ),
-
-        
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: GoogleFonts.lato(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: '$number ',
+                    style: GoogleFonts.lato(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: label,
+                    style: GoogleFonts.lato(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: labelColor,
+                    ),
+                  ),
+                ],
               ),
             ),
             Text(
@@ -422,7 +454,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: LinearGradient(
-                        colors: [Color(0xFFFFED4A), Color(0xFFFF9B1E)],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFFFFED4A), // Top
+                          Color(0xFFFF9B1E), // Bottom
+                        ],
                       ),
                     ),
                     child: Column(
@@ -433,7 +470,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 20,
                           height: 20,
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 3),
                         Text(
                           "Level-1",
                           style: GoogleFonts.lato(
@@ -496,8 +533,6 @@ class _HomeScreenState extends State<HomeScreen> {
         color: const Color(0xFFF1EDFF),
         borderRadius: BorderRadius.circular(20),
       ),
-
-      
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -507,18 +542,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                SizedBox(
-                  width: 90,
-                  height: 90,
-                  child: CircularProgressIndicator(
-                    value: 0.2,
-                    strokeWidth: 10,
-                    backgroundColor: const Color(0xFFE0DDF9),
-                    valueColor: const AlwaysStoppedAnimation<Color>(
-                      Color(0xFF4B22B4),
-                    ),
-                  ),
-                ),
+                AnimatedCircularProgress(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -566,18 +590,41 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      "← Previous",
-                      style: GoogleFonts.lato(fontSize: 14, color: Colors.grey),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.arrow_back_ios,
+                          size: 14,
+                          color: Colors.grey,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          "Previous",
+                          style: GoogleFonts.lato(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(width: 60),
-                    Text(
-                      "Next →",
-                      style: GoogleFonts.lato(
-                        fontSize: 14,
-                        color: Color(0xFF4B22B4),
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          "Next",
+                          style: GoogleFonts.lato(
+                            fontSize: 14,
+                            color: Color(0xFF4B22B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        const Icon(
+                          Icons.arrow_forward_ios,
+                          size: 14,
+                          color: Color(0xFF4B22B4),
+                        ),
+                      ],
                     ),
                   ],
                 ),

@@ -94,7 +94,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _circleIcon(
-                        Icons.arrow_back,
+                        SvgPicture.asset(
+                          'assets/icons/arrow.svg',
+                          height: 24,
+                          width: 24,
+                        ),
+                        bgColor: Colors.white,
                         onTap: () {
                           Navigator.pushReplacement(
                             context,
@@ -117,7 +122,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       const SizedBox(width: 12),
-                      _circleIcon(Icons.settings),
+                      _circleIcon(
+                        SvgPicture.asset(
+                          'assets/icons/setting.svg',
+                          height: 24,
+                          width: 24,
+                        ),
+                        bgColor: Colors.white,
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -155,8 +170,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 4,
+                            horizontal: 14,
+                            vertical: 6,
                           ),
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -172,10 +187,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              Icon(
-                                Icons.bolt,
-                                color: const Color.fromRGBO(142, 85, 221, 1),
-                                size: 18,
+                              SvgPicture.asset(
+                                'assets/icons/flash.svg', // ✅ Your asset path
+                                height: 18,
+                                width: 18,
+                                colorFilter: const ColorFilter.mode(
+                                  Color.fromRGBO(142, 85, 221, 1),
+                                  BlendMode.srcIn,
+                                ),
                               ),
                               Text(
                                 '432',
@@ -232,13 +251,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     const SizedBox(height: 20),
                                     _buildInfoTile(
                                       iconWidget: _circleIcon(
-                                        Icons.person,
-                                        bgColor: const Color(0xFF9E6BFC),
-                                        gradient: const LinearGradient(
-                                          colors: [
-                                            Color.fromRGBO(34, 3, 136, 1),
-                                            Color.fromRGBO(208, 195, 252, 1),
-                                          ],
+                                        SvgPicture.asset(
+                                          'assets/icons/person.svg',
+                                          height: 25,
+                                          width: 25,
+                                          colorFilter: const ColorFilter.mode(
+                                            Colors.white,
+                                            BlendMode.srcIn,
+                                          ),
                                         ),
                                       ),
                                       label: 'Full Name',
@@ -248,12 +268,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     const Gap(10),
                                     _buildInfoTile(
                                       iconWidget: _circleIcon(
-                                        Icons.email,
-                                        gradient: const LinearGradient(
-                                          colors: [
-                                            Color.fromRGBO(34, 3, 136, 1),
-                                            Color.fromRGBO(208, 195, 252, 1),
-                                          ],
+                                        SvgPicture.asset(
+                                          'assets/icons/sms.svg',
+                                          height: 25,
+                                          width: 25,
+                                          colorFilter: const ColorFilter.mode(
+                                            Colors.white,
+                                            BlendMode.srcIn,
+                                          ),
                                         ),
                                       ),
                                       label: 'Email Address',
@@ -262,12 +284,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     const Gap(10),
                                     _buildInfoTile(
                                       iconWidget: _circleIcon(
-                                        Icons.phone,
-                                        gradient: const LinearGradient(
-                                          colors: [
-                                            Color.fromRGBO(34, 3, 136, 1),
-                                            Color.fromRGBO(208, 195, 252, 1),
-                                          ],
+                                        SvgPicture.asset(
+                                          'assets/icons/call.svg',
+                                          height: 25,
+                                          width: 25,
+                                          colorFilter: const ColorFilter.mode(
+                                            Colors.white,
+                                            BlendMode.srcIn,
+                                          ),
                                         ),
                                       ),
                                       label: 'Contact Number',
@@ -277,12 +301,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     const Gap(10),
                                     _buildInfoTile(
                                       iconWidget: _circleIcon(
-                                        Icons.star,
-                                        gradient: const LinearGradient(
-                                          colors: [
-                                            Color.fromRGBO(34, 3, 136, 1),
-                                            Color.fromRGBO(208, 195, 252, 1),
-                                          ],
+                                        SvgPicture.asset(
+                                          'assets/icons/star.svg',
+                                          height: 25,
+                                          width: 25,
+                                          colorFilter: const ColorFilter.mode(
+                                            Colors.white,
+                                            BlendMode.srcIn,
+                                          ),
                                         ),
                                       ),
                                       label: 'Current Level',
@@ -291,12 +317,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     const Gap(10),
                                     _buildInfoTile(
                                       iconWidget: _circleIcon(
-                                        Icons.feedback_outlined,
-                                        gradient: const LinearGradient(
-                                          colors: [
-                                            Color.fromRGBO(34, 3, 136, 1),
-                                            Color.fromRGBO(208, 195, 252, 1),
-                                          ],
+                                        SvgPicture.asset(
+                                          'assets/icons/star.svg',
+                                          height: 25,
+                                          width: 25,
+                                          colorFilter: const ColorFilter.mode(
+                                            Colors.white,
+                                            BlendMode.srcIn,
+                                          ),
                                         ),
                                       ),
                                       label: 'Feedback',
@@ -306,17 +334,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     const Gap(10),
                                     _buildInfoTile(
                                       iconWidget: _circleIcon(
-                                        Icons.logout,
-                                        bgColor: const Color(0xFFFA4141),
+                                        SvgPicture.asset(
+                                          'assets/icons/log_out.svg',
+                                          height: 25,
+                                          width: 25,
+                                          colorFilter: const ColorFilter.mode(
+                                            Colors.white,
+                                            BlendMode.srcIn,
+                                          ),
+                                        ),
+                                        bgColor: const Color.fromARGB(
+                                            255, 224, 18, 4),
                                       ),
                                       label: 'Logout',
                                       value: 'Click here to logout',
-                                      iconColor: const Color.fromARGB(
-                                        255,
-                                        224,
-                                        18,
-                                        4,
-                                      ),
+                                      iconColor:
+                                          const Color.fromARGB(255, 224, 18, 4),
                                     ),
                                   ],
                                 ),
@@ -402,12 +435,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           if (showEdit)
             Container(
-              padding: const EdgeInsets.all(6),
+              padding: const EdgeInsets.all(10),
               decoration: const BoxDecoration(
                 color: Color(0xFFF3F0FE),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.edit, color: Color(0xFF9E6BFC), size: 20),
+              child: SvgPicture.asset(
+                'assets/icons/edit_pencil.svg', // Replace with your actual SVG path
+                height: 25,
+                width: 23,
+
+                colorFilter: const ColorFilter.mode(
+                  Color(0xFF9E6BFC),
+                  BlendMode.srcIn,
+                ),
+              ),
             ),
           if (trailingIcon != null)
             Container(
@@ -416,10 +458,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Color(0xFFF3F0FE),
                 shape: BoxShape.circle,
               ),
-              child: Icon(
-                trailingIcon,
-                color: const Color(0xFF9E6BFC),
-                size: 20,
+              child: SvgPicture.asset(
+                'assets/icons/sent.svg', // Replace with your actual SVG path
+                height: 25,
+                width: 18,
+                colorFilter: const ColorFilter.mode(
+                  Color(0xFF9E6BFC),
+                  BlendMode.srcIn,
+                ),
               ),
             ),
         ],
@@ -428,37 +474,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _circleIcon(
-    IconData icon, {
-    Color? bgColor = Colors.white,
+    Widget icon, {
+    Color? bgColor,
     Gradient? gradient,
     VoidCallback? onTap,
   }) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: Material(
-        color: Colors.transparent,
-        shape: const CircleBorder(),
-        child: InkWell(
-          onTap: onTap,
-          customBorder: const CircleBorder(),
-          hoverColor: const Color.fromARGB(255, 156, 177, 238).withOpacity(0.2),
-          splashColor: const Color.fromARGB(255, 94, 92, 97).withOpacity(0.3),
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: gradient == null ? bgColor : null,
-              gradient: gradient,
-            ),
-            child: Icon(
-              icon,
-              size: 23,
-              color: (gradient != null || bgColor != Colors.white)
-                  ? Colors.white
-                  : const Color(0xFF9E6BFC),
-            ),
-          ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: bgColor,
+          gradient: bgColor == null
+              ? (gradient ??
+                  const LinearGradient(
+                    colors: [
+                      Color.fromRGBO(34, 3, 136, 1),
+                      Color.fromRGBO(208, 195, 252, 1),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ))
+              : null,
         ),
+        child: icon,
       ),
     );
   }
