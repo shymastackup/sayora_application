@@ -270,8 +270,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(4),
                   child: SvgPicture.asset(
                     'assets/icons/notification.svg', // Update this path if needed
-                    height: 20,
-                    width: 20,
+                    height: 25,
+                    width: 25,
                     colorFilter: const ColorFilter.mode(
                       Color.fromRGBO(139, 109, 212, 1),
                       BlendMode.srcIn,

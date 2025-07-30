@@ -1,21 +1,11 @@
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sayora/screens/home_screen.dart';
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+class HelpScreen extends StatelessWidget {
+  const HelpScreen({super.key});
 
-  @override
-  State<ChatScreen> createState() => _ChatScreenState();
-}
-class _ChatScreenState extends State<ChatScreen> {
-  final TextEditingController _controller = TextEditingController();
-  final FocusNode _focusNode = FocusNode();
-  bool _showEmojiPicker = false;
-
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             time: "10:00 AM",
                             avatar: '👩‍🦰',
                           ),
-                          _messageBubble(
+                           _messageBubble(
                             isMe: true,
                             message:
                                 "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit.Consectetur Adipisicing Elit?",
@@ -180,7 +170,7 @@ class _ChatScreenState extends State<ChatScreen> {
     required String avatar,
   }) {
     final bubbleColor = isMe
-        ? const Color.fromARGB(223, 116, 116, 226)
+        ? const Color.fromARGB(223, 173, 165, 239)
         : const Color.fromRGBO(130, 112, 188, 1);
 
     final avatarUrl = avatar == '👩‍🦰'
@@ -266,117 +256,68 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-    Widget _buildInputField() {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
+  Widget _buildInputField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12.withOpacity(0.08),
+              blurRadius: 15,
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
+        child: TextField(
+          decoration: InputDecoration(
+            hintText: "Type message here...",
+            hintStyle: GoogleFonts.lato(color: Colors.grey[600], fontSize: 14),
+            filled: true,
+            fillColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(vertical: 14),
+            border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12.withOpacity(0.08),
-                  blurRadius: 15,
-                  offset: const Offset(0, 8),
+              borderSide: BorderSide.none,
+            ),
+            prefixIcon: const Icon(
+              Icons.emoji_emotions_outlined,
+              color: Color.fromRGBO(175, 164, 212, 1),
+            ),
+            suffixIcon: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFFEDE7F6),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Icon(Icons.mic, color: Color(0xFF6B46C1), size: 20),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [Color(0xFF6B46C1), Color(0xFF9F7AEA)],
+                    ),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Icon(Icons.send, color: Colors.white, size: 20),
+                  ),
                 ),
               ],
             ),
-            child: TextField(
-              controller: _controller,
-              focusNode: _focusNode,
-              onTap: () {
-                if (_showEmojiPicker) {
-                  setState(() {
-                    _showEmojiPicker = false;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                hintText: "Type message here...",
-                hintStyle: GoogleFonts.lato(color: Colors.grey[600], fontSize: 14),
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.symmetric(vertical: 14),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide.none,
-                ),
-                prefixIcon: IconButton(
-                  icon: const Icon(
-                    Icons.emoji_emotions_outlined,
-                    color: Color.fromRGBO(175, 164, 212, 1),
-                  ),
-                  onPressed: () {
-                    FocusScope.of(context).unfocus();
-                    setState(() {
-                      _showEmojiPicker = !_showEmojiPicker;
-                    });
-                  },
-                ),
-                suffixIcon: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(right: 8),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xFFEDE7F6),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Icon(Icons.mic, color: Color(0xFF6B46C1), size: 20),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 8),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [Color(0xFF6B46C1), Color(0xFF9F7AEA)],
-                        ),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Icon(Icons.send, color: Colors.white, size: 20),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
           ),
-        ),
-        if (_showEmojiPicker) _buildEmojiPicker(),
-      ],
-    );
-  }
-    Widget _buildEmojiPicker() {
-    return SizedBox(
-      height: 250,
-      child: EmojiPicker(
-        onEmojiSelected: (category, emoji) {
-          _controller.text += emoji.emoji;
-        },
-        config: const Config(
-          columns: 7,
-          emojiSizeMax: 28,
-          verticalSpacing: 0,
-          horizontalSpacing: 0,
-          gridPadding: EdgeInsets.zero,
-          initCategory: Category.SMILEYS,
-          bgColor: Color(0xFFF2F2F2),
-          indicatorColor: Color(0xFF6B46C1),
-          iconColorSelected: Color(0xFF6B46C1),
-          backspaceColor: Color(0xFF6B46C1),
-          enableSkinTones: true,
-          recentTabBehavior: RecentTabBehavior.RECENT,
-          recentsLimit: 20,
         ),
       ),
     );
   }
-
-
 }

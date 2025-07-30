@@ -21,16 +21,16 @@ class _AnimatedCircularProgressState extends State<AnimatedCircularProgress>
       duration: const Duration(seconds: 3),
     );
 
-    _animation = Tween<double>(begin: 0.0, end: 0.7).animate(
+    _animation = Tween<double>(begin: 0.0, end: 0.3).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
 
-    _controller.forward(); // Start animation
+    _controller.forward(); 
   }
 
   @override
   void dispose() {
-    _controller.dispose(); // Clean up
+    _controller.dispose(); 
     super.dispose();
   }
 
@@ -50,7 +50,7 @@ class _AnimatedCircularProgressState extends State<AnimatedCircularProgress>
                 value: _animation.value,
                 strokeWidth: 10,
                 backgroundColor: const Color(0xFFE0DDF9),
-                valueColor: const AlwaysStoppedAnimation<Color>(
+                valueColor: AlwaysStoppedAnimation<Color>(
                   Color(0xFF4B22B4),
                 ),
               ),
